@@ -146,21 +146,6 @@ fun GreetingPreview() {
     }
 }
 
-fun ByteArray.toHexString(): String {
-    val hexChars = "0123456789ABCDEF"
-    val result = StringBuilder(size * 2)
-
-    map { byte ->
-        val value = byte.toInt()
-        val hexChar1 = hexChars[value shr 4 and 0x0F]
-        val hexChar2 = hexChars[value and 0x0F]
-        result.append(hexChar1)
-        result.append(hexChar2)
-    }
-
-    return result.toString()
-}
-
 fun readNdefMessage(tag: Tag?): String? {
     val ndef = Ndef.get(tag)
     return if (ndef != null) {
